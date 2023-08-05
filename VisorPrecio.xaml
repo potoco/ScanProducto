@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ScanProducto.VisorPrecio"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"             
+             Title="VisorPrecio">
+    <Grid x:Name="grdMain">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnTapped"/>
+        </Grid.GestureRecognizers>
+        <toolkit:MediaElement x:Name="audioControl" IsVisible="false" Source="embed://beep.wav" />
+        <zxing:CameraBarcodeReaderView 
+            x:Name="barcoderReader"
+            IsDetecting="True"
+            IsTorchOn="False"
+            BarcodesDetected="BarcodeDetected"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" 
+            />
+
+        <Border 
+                x:Name="baseNegro"
+                Margin="40,75,40,90"
+                BackgroundColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                StrokeThickness="4"
+                Stroke="black"
+                StrokeShape="RoundRectangle 10,10,10,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="72" />
+                </Grid.RowDefinitions>
+                <VerticalStackLayout>
+                    <Label
+                    Margin="0,15,0,0"    
+                    HorizontalOptions="Center"
+                    Text="formato"
+                    FontSize="Micro"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    x:Name="txtFormato"/>
+                    <Label
+                    HorizontalOptions="Center"
+                    Text="-"
+                    TextColor="White"
+                    x:Name="txtResultado"
+                    FontSize="Medium"/>
+                    <Border
+                    Margin="15,10,15,0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10,10,10,10"
+                    HeightRequest="190">
+                        <VerticalStackLayout>
+                            <Image Source="vitacortil.png" Margin="5,30,5,0" />
+                        </VerticalStackLayout>
+                    </Border>
+                    
+                </VerticalStackLayout>
+                <Button 
+                    Grid.Row="1"
+                    Clicked="Button_Clicked"
+                    Text="Escanear mas"
+                    VerticalOptions="FillAndExpand"
+                    Margin="12"/>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentPage>

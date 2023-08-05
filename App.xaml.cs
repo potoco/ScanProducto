@@ -1,4 +1,5 @@
-﻿namespace ScanProducto;
+﻿using Microsoft.Maui.Controls;
+namespace ScanProducto;
 
 public partial class App : Application
 {
@@ -6,6 +7,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
-	}
+        MainPage = new NavigationPage(new AppShell());
+
+    }
 }
