@@ -22,8 +22,30 @@ public partial class VisorPrecio : ContentPage
             string v = "-";
             txtResultado.Text = v;
             txtFormato.Text = v;
-            baseNegro.Opacity = 0;
+            apagarProducto();
         };
+    }
+
+    private void apagarProducto()
+    {
+        //baseNegro.Opacity = 0;
+        //baseNegroFront.Opacity = 0;
+        baseProducto.Opacity = 0;
+    }
+    private async Task showProducto(bool show=true)
+    {
+        if (show)
+        {
+            //await baseNegro.FadeTo(0.6, 900);
+            //await baseNegroFront.FadeTo(1, 900);
+            await baseProducto.FadeTo(1, 900);
+        }
+        else
+        {
+            //await baseNegro.FadeTo(0, 400);
+            //await baseNegroFront.FadeTo(0, 400);
+            await baseProducto.FadeTo(0, 400);
+        }
     }
 
     async void OnTapped(object sender, EventArgs e)
@@ -50,7 +72,7 @@ public partial class VisorPrecio : ContentPage
                 txtFormato.Text = $"{num.Format}";
                 if (audioControl.CurrentState != MediaElementState.Playing)
                     audioControl.Play();
-                await baseNegro.FadeTo(1, 900);
+                await showProducto();
                 await Task.Delay(5000);
                 codigoUltimo = string.Empty;
             }
@@ -62,7 +84,6 @@ public partial class VisorPrecio : ContentPage
         barcoderReader.IsDetecting = true;
         txtResultado.Text = "";
         txtFormato.Text = "";
-        await baseNegro.FadeTo(0, 400);
-
+        await showProducto(false);
     }
 }
