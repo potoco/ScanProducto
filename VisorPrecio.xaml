@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ScanProducto.VisorPrecio"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"             
-             Padding="0"
-             Title="VisorPrecio">
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls" 
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             Padding="0">
     <Grid x:Name="grdMain" 
         Padding="0">
         <Grid.GestureRecognizers>
@@ -19,6 +20,21 @@
             BarcodesDetected="BarcodeDetected"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"/>
+
+        <Line x:Name="lnHor" X1="0" Y1="0" X2="0" Y2="0" Stroke="#A90000" StrokeThickness="2" />
+        <Line x:Name="lnVer" X1="0" Y1="0" X2="0" Y2="0" Stroke="#A90000" StrokeThickness="2" />
+
+        <Border 
+            x:Name="borderMargin"
+            Opacity="0.6"
+            Stroke="#393939"
+            Padding="0"
+            Margin="-25"
+            StrokeThickness="45"
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+        </Border>
         <Grid
             x:Name="baseProducto"
             Opacity="0"

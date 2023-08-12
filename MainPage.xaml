@@ -2,22 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="Beige"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
              x:Class="ScanProducto.MainPage">
 
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+            Padding="0"
+            VerticalOptions="Start">
 
-            <Image
+            <VerticalStackLayout     
+                VerticalOptions="Start">
+                <Image x:Name="imgJumbo"
+                    Source="jumbo.svg"
+                    HeightRequest="300"
+                    SemanticProperties.Description="hasar logo"
+                    WidthRequest="390" />
+                <Image x:Name="imgHasar"
+                Margin="0,-60,0,0"
                 Source="hasar_logo.png"
                 SemanticProperties.Description="hasar logo"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+                WidthRequest="190" />
+
+            </VerticalStackLayout>
 
             <Label
-                Text="Bienevenidos"
+                Margin="0,30,0,0"
+                Text="Bienevenidos" 
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
@@ -28,13 +40,17 @@
                 SemanticProperties.Description="Precio de Productos simple!!!"
                 FontSize="18"
                 HorizontalOptions="Center" />
-
-            <Button
+            
+            <HorizontalStackLayout
+                HorizontalOptions="Center" Spacing="10"  >
+                <Button
                 x:Name="CounterBtn"
-                Text="Ver Precios"
+                Text="Scanner Producto"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                Clicked="OnCounterClicked"/>
+                
+                <Button Text="Lista Alfabetica" />
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
